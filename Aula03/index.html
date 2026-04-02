@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula03 - Formulário</title>
+</head>
+<body>
+    <main>
+
+        <header>
+            <h1>Aula 03 - HTML Completo</h1>
+            <nav>
+                <ul>
+                    <li><a href="#formulario">Formulário</a></li>
+                    <li>
+                        <a href="#tabelas">Tebelas</a>
+                        <ul>
+                            <li><a href="#tabela">Tecnologias</a></li>
+                            <li><a href="#horarios">Horários</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#glossario">Glossário</a></li>
+                    <li><a href="midias">Mídias</a></li>
+                </ul>
+            </nav>
+        </header>
+ 
+        <section id="Formulário">
+            <h2>Formulário de Contrato</h2>
+ 
+            <form action="#" method="post">
+                <label for="nome">Nome Completo: </label>
+                <input type="text" id="nome" name="nome"
+                    placeholder="Ex: Maria da Silva"
+                    required minlength="3" maxlength="80"
+                    autocomplete="name">
+                <br>
+                <label for="email">Email: </label>
+                <input type="email" id="email" name="email"
+                    placeholder="seu@email.com"
+                    required autocomplete="email">
+                <br>
+                <label for="telefone">Telefone: </label>
+                <input type="tel" id="telefone" name="telefone"
+                    placeholder="(19) 99999-9999"
+                    pattern="\([0-9]{2}\)[0-9]{4,5}-[0-9]{4}">
+                <br>
+                <label for="site">Website: </label>
+                <input type="url" id="site" name="site">
+                <br>
+
+                <fieldset>
+                    <legend>Como prefere ser contatado?</legend>
+                
+
+                    <input type="radio" id="contato-email" name="preferencia" value="email">
+                    <label for="contato-email">Por E-mail</label>
+
+                    <input type="radio" id="contato-telefone" name="preferencia" value="telefone">
+                    <label for="contato-telefone">Por telefone</label>
+
+                    <input type="radio" id="contato-whatsapp" name="preferencia" value="whatsapp" checked>
+                    <label for="contato-whatsapp">Por whatsapp</label>
+
+                </fieldset>
+
+                <fieldset>
+                    <legend>Áreas de interesse:</legend>
+
+                    <input type="checkbox" id="int-html" name="interesse" value="html">
+                    <label for="int-html">HTML/CSS</label>
+
+                    <input type="checkbox" id="int-js" name="interesse" value="js">
+                    <label for="int-js">JavaScript</label>
+
+                    <input type="checkbox" id="int-ux" name="interesse" value="ux">
+                    <label for="int-ux">UX Design</label>"
+                </fieldset>
+
+                    <button type="submit">Enviar mensagem</button>
+                    <button type="reset">Limpar formulário</button>
+        </section>
+
+            <section id="tabela">
+            <h2>Tabela de Tecnologias</h2>
+
+            <table>
+                <caption>Tecnologias do Curso de Desenvolvimento</caption>
+
+            <thead>
+                <tr>
+                    <th scope="col">Tecnologia</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Nível</th>
+                    <th scope="col">Aulas</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>HTML5</td>
+                    <td>Marcação</td>
+                    <td>Fundamental</td>
+                    <td>3</td>
+                </tr>
+
+                <tr>
+                    <td>CSS3</td>
+                    <td>Estilização</td>
+                    <td>Fundamental</td>
+                    <td>5</td>
+                </tr>
+
+                <tr>
+                    <td>JavaScript</td>
+                    <td>Linguagem</td>
+                    <td>Intermediário</td>
+                    <td>4</td>
+                </tr>
+
+                <tr>
+                    <td>Bootstrap 5</td>
+                    <td>Framework</td>
+                    <td>Intermediário</td>
+                    <td>2</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total de aulas de conteúdo</td>
+                    <td>14</td>
+                </tr>
+            </tfoot>
+
+            </table>
+        </section>
+
+        <section id="horarios">
+            <h2>Horário de Aulas</h2>
+
+            <table>
+                <caption>Grade semanal — UC15</caption>
+
+            <thead>
+                <tr>
+                    <th scope="col">Horário</th>
+                    <th scope="col">Segunda</th>
+                    <th scope="col">Quarta</th>
+                    <th scope="col">Sexta</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <th scope="row">08:00 – 10:00</th>
+                    <td colspan="2">Desenvolvimento Front-End</td>
+                    <td>Livre</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">10:00 – 12:00</th>
+                    <td>Banco de Dados</td>
+                    <td rowspan="2">Projeto Integrador</td>
+                    <td>Front-End (cont.)</td>
+                </tr>
+
+                <tr>
+                    <th scope="row">13:00 – 15:00</th>
+                    <td>Livre</td>
+                    <td>Livre</td>
+                </tr>
+            </tbody>
+
+            </table>
+        </section>
+
+        </section>
+
+        <section id="glossario">
+            <h2>Glossário Front-End</h2>
+
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>HyperText Markup Language — linguagem de marcação
+                        que estrutura o conteúdo de páginas web.</dd>
+
+                    <dt>CSS</dt>
+                    <dd>Cascading Style Sheets — linguagem que define
+                        a aparência visual dos elementos HTML.</dd>
+
+                    <dt>JavaScript</dt>
+                    <dd>Linguagem de programação que adiciona
+                        comportamento interativo às páginas web.</dd>
+
+                    <dt>Responsividade</dt>
+                    <dd>Capacidade de um layout se adaptar a diferentes
+                        tamanhos de tela sem perder usabilidade.</dd>
+
+                    <dt>Semântica</dt>
+                    <dd>Uso de tags HTML pelo seu significado real,
+                        não apenas pelo efeito visual que produzem.</dd>
+                </dl>
+
+        </section>
+
+        <section>
+            <h2>Mídias</h2>
+
+            <h3>Vídeos</h3>
+            <figure>
+                <video controls width="300"
+                    poster="imagem/Shingeki no kyojin.jpg"
+                    preload="metadata">
+
+                    <source src="video/YTDown.com_Shorts_LEVI-ACKERMAN-s-Epic-Entry-Attitude-Edit_Media_zZzbbyO_xng_001_1080p.mp4" type="video/mp4">
+                    Seu navegador não suporta reprodução de vídeo.
+                </video>
+
+                <figcaption>
+                    Demonstração de HTML5 em ação.
+                </figcaption>
+            </figure>
+        </section>
+    </main>
+    
+</body>
+</html>
