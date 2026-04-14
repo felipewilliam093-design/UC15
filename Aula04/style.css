@@ -1,441 +1,270 @@
+/* ============================================
+   VARIÁVEIS — UC15 Portfólio
+   ============================================ */
+:root {
+  --cor-primaria:   #1F4E79;
+  --cor-secundaria: #1f4e79;
+  --cor-acento:     #a85404;
+  --cor-fundo:      #F8F9FA;
+  --cor-texto:      #333333;
+  --cor-branco:     #FFFFFF;
+  --fonte-base:     'Poppins', Arial, sans-serif;
+  --raio-borda:     8px;
+  --sombra-card:    0 2px 12px rgba(0, 0, 0, 0.08);
+  --transicao:      all 0.3s ease;
+}
+
+/* ============================================
+   RESET
+   ============================================ */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   BASE
+   ============================================ */
+html {
+  font-size: 16px;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f5f5f5;
-    color: #333333;
-    line-height: 1.6;
+  font-family: var(--fonte-base);
+  font-size: 1rem;
+  line-height: 1.7;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
 }
 
+/* ============================================
+   TIPOGRAFIA
+   ============================================ */
 h1 {
-    color: #1f4379;
+  color: var(--cor-primaria);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 h2 {
-    color: #2e75b6;
+  color: var(--cor-secundaria);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
 }
 
-.destaque {
-    background-color: #fff2cc;
-    padding: 8px;
+p {
+  margin-bottom: 1rem;
+  max-width: 65ch;
 }
 
-#sobre {
-    background-color: #ebf3fb;
+h2 + p {
+  font-style: italic;
+  color: #595959;
+}
+
+a:visited {
+  color: #595959;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.container {
+  width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+header {
+  background-color: var(--cor-primaria);
+  padding: 24px 0;
+  margin-bottom: 32px;
+}
+
+header h1 {
+  color: var(--cor-branco);
+  margin: 0;
+}
+
+header nav {
+  margin-top: 12px;
 }
 
 header nav a {
-    color: #1f4e79
-
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: var(--cor-secundaria);
+  color: var(--cor-branco);
+  border-radius: 4px;
+  text-decoration: none;
+  margin-right: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85rem;
 }
 
-header nav a { 
-  color: #1F4E79; 
-  text-decoration: none; 
-  margin-right: 16px; 
-} 
- 
-main section { 
-  margin-bottom: 32px; 
-} 
- 
-article > p { 
-  margin-bottom: 12px; 
-} 
- 
-h2 + p { 
-  font-style: italic; 
-  color: #595959; 
+header nav a:hover {
+  background-color: var(--cor-acento);
 }
 
-header nav a:hover { 
-  color: #E05C00; 
-  text-decoration: underline; 
-} 
- 
-a:visited { 
-  color: #595959; 
-} 
- 
-input:focus, 
-textarea:focus { 
-  outline: 2px solid #2E75B6; 
-  outline-offset: 2px; 
-} 
- 
-ul li:nth-child(odd) { 
-  background-color: #f9f9f9; 
+/* ============================================
+   MAIN E SECTIONS
+   ============================================ */
+main section {
+  margin-bottom: 32px;
 }
 
-.container { 
-  width: 900px; 
-  margin: 0 auto; 
-  padding: 0 24px; 
-} 
- 
+section {
+  background-color: var(--cor-branco);
+  padding: 32px;
+  margin-bottom: 24px;
+  border-left: 4px solid var(--cor-secundaria);
+  border: 1px solid #DDDDDD;
+}
+
+article > p {
+  margin-bottom: 12px;
+}
+
+/* ============================================
+   IMAGENS
+   ============================================ */
+img {
+  border-radius: var(--raio-borda);
+  max-width: 100%;
+  display: block;
+}
+
+.foto-perfil {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border: 3px solid var(--cor-secundaria);
+}
+
+/* ============================================
+   CLASSES UTILITÁRIAS
+   ============================================ */
+.destaque {
+  background-color: #FFF2CC;
+  padding: 8px;
+}
+
+#sobre {
+  background-color: #EBF3FB;
+}
+
+/* ============================================
+   FORMULÁRIO
+   ============================================ */
+input:focus,
+textarea:focus {
+  outline: 2px solid var(--cor-secundaria);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   LISTAS
+   ============================================ */
+ul li:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  background-color: var(--cor-primaria);
+  color: var(--cor-branco);
+  text-align: center;
+  padding: 24px;
+  margin-top: 40px;
+}
+
+footer p {
+  font-size: 0.875rem;
+}
+
+.hero { 
+  background-image: url('imagem/banner.jpg'); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  min-height: 300px; 
+  display: flex; 
+  align-items: center; 
+  padding: 48px 32px; 
+  border-radius: var(--raio-borda); 
+}
+
 header { 
-  background-color: #1F4E79; 
-  padding: 24px 0; 
+  background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%); 
+  padding: 40px 0; 
   margin-bottom: 32px; 
-} 
- 
-header h1 { 
-  color: #FFFFFF; 
-  margin: 0; 
-} 
- 
-header nav a { 
-  color: #BDD7EE; 
-} 
- 
-section { 
-  background-color: #FFFFFF; 
-  padding: 32px; 
-  margin-bottom: 24px; 
-  border: 1px solid #DDDDDD; 
 }
 
-img{
-  border-radius: 8px; 
-  max-width: 100%; 
-  display: block; 
-} 
- 
-.foto-perfil { 
-  border-radius: 50%; 
-  width: 200px; 
-  height: 200px;
-   object-fit: cover; 
-  border: 3px solid #2E75B6; 
-} 
- 
-section { 
-  border-left: 4px solid #2E75B6; 
-} 
-
-header nav { 
-  margin-top: 12px; 
-} 
- 
 header nav a { 
   display: inline-block; 
-  padding: 6px 14px; 
-  background-color: #2E75B6; 
-  color: #FFFFFF; 
-  border-radius: 4px; 
+  padding: 6px 16px; 
+  background-color: rgb(255, 255, 255); 
+  color: var(--cor-branco); 
+  border-radius: var(--raio-borda); 
   text-decoration: none; 
-  margin-right: 8px; 
+  font-weight: 600; 
+  font-size: 0.85rem; 
+  text-transform: uppercase; 
+  letter-spacing: 0.05em; 
+  transition: var(--transicao); 
 } 
  
 header nav a:hover { 
-  background-color: #E05C00; 
+  background-color: var(--cor-acento); 
+  transform: translateY(-2px); 
+} 
+ 
+section { 
+  background-color: var(--cor-branco); 
+  padding: 32px; 
+  margin-bottom: 24px; 
+  border-left: 4px solid var(--cor-secundaria); 
+  border-radius: var(--raio-borda); 
+  box-shadow: var(--sombra-card); 
+  transition: var(--transicao); 
 }
 
-html { 
-  font-size: 16px; 
-} 
- 
-body { 
-  font-size: 1rem; 
-  line-height: 1.6; 
-} 
- 
-h1 { 
-  font-size: 2rem; 
-} 
- 
-h2 { 
-  font-size: 1.5rem; 
- 
-  margin-bottom: 1rem; 
-} 
- 
-p { 
-  margin-bottom: 1rem; 
-  max-width: 65ch; 
-} 
- 
-footer { 
-  background-color: #1F4E79; 
-  color: #FFFFFF; 
-  text-align: center; 
-  padding: 24px; 
-  margin-top: 40px; 
+section:hover { 
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12); 
+  transform: translateY(-2px); 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+h2::before { 
+  content: ''; 
+  display: block; 
+  width: 36px; 
+  height: 3px; 
+  background-color: var(--cor-acento); 
+  margin-bottom: 10px; 
+  border-radius: 2px; 
+} 
+ 
+::selection { 
+  background-color: var(--cor-secundaria); 
+  color: var(--cor-branco); 
+} 
+ 
+input::placeholder, 
+textarea::placeholder { 
+  color: #AAAAAA; 
+  font-style: italic; 
+}
 
