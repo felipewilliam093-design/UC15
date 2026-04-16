@@ -2,181 +2,496 @@
    SNIPPET 01 -- Setup CDN + Primeiro Grid Bootstrap 
    Arquivo: demo.html (novo arquivo) 
    Slide 07 
-   ================================================ --> 
-<!DOCTYPE html> 
-<html lang="pt-BR"> 
-<head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Demo Bootstrap</title> 
-  <!-- Bootstrap CSS -- ANTES do seu style.css --> 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-rel="stylesheet">
-  <style>
-    .card-img-fixed {
-      height: 200px;
-      object-fit: cover;
-    }
-    .card {
-      display: flex;
-      flex-direction: column;
-    }
-    .card-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .card-text {
-      flex: 1;
-    }
-    .card-body .btn {
-      align-self: flex-start;
-      margin-top: auto;
-    }
-  </style>
-</head> 
+   ================================================ -->
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Bootstrap</title>
 
-<body> 
+    <!-- Bootstrap CSS -- ANTES do seu style.css -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
 
+    <style>
+      .card-img-fixed {
+        height: 200px;
+        object-fit: cover;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+      }
+      .card-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .card-text {
+        flex: 1;
+      }
+      .card-body .btn {
+        align-self: flex-start;
+        margin-top: auto;
+      }
+    </style>
+  </head>
+
+  <body>
     <!-- ================================================ 
    SNIPPET 02 -- Hero e Header com utilitarios 
    Adicionar no demo.html antes da section de cards 
    Slide 10 
-   ================================================ --> 
- 
-<!-- Navbar com hamburger responsivo --> 
-<nav class="navbar navbar-expand-md navbar-dark bg-primary"> 
-  <div class="container"> 
-    <a class="navbar-brand fw-bold" href="#">ByteShield</a> 
- 
-    <!-- Botao hamburger (aparece apenas no mobile) --> 
-    <button class="navbar-toggler" type="button" 
-            data-bs-toggle="collapse" 
-            data-bs-target="#menuPrincipal" 
-            aria-controls="menuPrincipal" 
-            aria-expanded="false" 
-            aria-label="Abrir menu"> 
-      <span class="navbar-toggler-icon"></span> 
-    </button> 
- 
-    <!-- Links (colapsam no mobile, expandem no tablet+) --> 
-    <div class="collapse navbar-collapse" id="menuPrincipal"> 
-      <ul class="navbar-nav ms-auto gap-2"> 
-        <li class="nav-item"> 
-          <a class="nav-link active" href="#">Home</a> 
-        </li> 
-        <li class="nav-item"> 
-          <a class="nav-link" href="#">Servicos</a> 
-        </li> 
+   ================================================ -->
+
+    <!-- Navbar com hamburger responsivo -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">ByteShield</a>
+
+        <!-- Botao que abre o offcanvas (colocar onde quiser) -->
+        <button
+          class="btn btn-outline-secondary"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#menuLateral"
+        >
+          Abrir menu lateral
+        </button>
+
+        <!-- Botao hamburger (aparece apenas no mobile) -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menuPrincipal"
+          aria-controls="menuPrincipal"
+          aria-expanded="false"
+          aria-label="Abrir menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links (colapsam no mobile, expandem no tablet+) -->
+        <div class="collapse navbar-collapse" id="menuPrincipal">
+          <ul class="navbar-nav ms-auto gap-2">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#servicos">Servicos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contato">Contato</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero section com utilitarios -->
+    <section class="bg-dark text-white py-5 text-center" id="home">
+      <div class="container">
+        <h2 class="display-4 fw-bold mb-3">
+          Cuide da segurança ciibernética da sua empresa com quem entende!
+        </h2>
+        <p class="lead mb-4 text-white-50">
+          Solucoes digitais para proteger sua empresa crescer.
+        </p>
+        <a href="#contato" class="btn btn-warning btn-lg me-2 fw-bold"
+          >Fale com um especialista</a
+        >
+        <a href="#faq" class="btn btn-warning btn-lg">Saiba mais</a>
+      </div>
+
+      <!-- Botao que aciona o modal (colocar no hero) -->
+      <button
+        class="btn btn-warning btn-lg mt-3 fw-bold"
+        data-bs-toggle="modal"
+        data-bs-target="#modalInscricao"
+      >
+        Inscreva-se agora
+      </button>
+    </section>
+
+    <!-- Modal de inscricao -->
+    <div class="modal fade" id="modalInscricao" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Fazer inscricao</h5>
+            <button
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <div class="mb-3">
+              <label class="form-label">Seu nome</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nome completo"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Seu e-mail</label>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="email@exemplo.com"
+              />
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn btn-secondary" data-bs-dismiss="modal">
+              Cancelar
+            </button>
+            <button class="btn btn-primary">Confirmar inscricao</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid responsivo: 1 col mobile, 2 tablet, 3 desktop -->
+    <section class="container my-5" id="servicos">
+      <h2 class="mb-4">Nossos Serviços</h2>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img
+              src="imagem/SOC.png"
+              class="card-img-top card-img-fixed"
+              alt="SOC 24x7"
+            />
+            <div class="card-body">
+              <h5 class="card-title">SOC 24x7</h5>
+              <p class="card-text">
+                Monitoramento 24 horas por dia, 7 dias por semana.
+              </p>
+              <a href="#" class="btn btn-primary">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img
+              src="imagem/Cloud Network Security_ A 2026 Guide to Hybrid & Multi-Cloud.jpg"
+              class="card-img-top card-img-fixed"
+              alt="Cloud Security"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Cloud Security</h5>
+              <p class="card-text">
+                Segurança para o ambiente em nuvem de sua empresa.
+              </p>
+              <a href="#" class="btn btn-primary">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img
+              src="imagem/consultoria02.png"
+              class="card-img-top card-img-fixed"
+              alt="Threat Intelligence"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Threat Intelligence</h5>
+              <p class="card-text">
+                Análise e vigilância de ameaças cibernéticas.
+              </p>
+              <a href="#" class="btn btn-primary">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img
+              src="imagem/Global Cybersecurity Operations.jpg"
+              class="card-img-top card-img-fixed"
+              alt="MDR"
+            />
+            <div class="card-body">
+              <h5 class="card-title">MDR</h5>
+              <p class="card-text">
+                Monitoramento e resposta a incidentes em tempo real.
+              </p>
+              <a href="#" class="btn btn-primary">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img
+              src="imagem/baixados (2).jpg"
+              class="card-img-top card-img-fixed"
+              alt="Pentest"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Pentest</h5>
+              <p class="card-text">
+                Testes de penetração para identificar vulnerabilidades no seu
+                ambiente.
+              </p>
+              <a href="#" class="btn btn-primary">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card h-100">
+            <img
+              src="imagem/consultoria.png"
+              class="card-img-top card-img-fixed"
+              alt="Consultoria"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Consultoria</h5>
+              <p class="card-text">
+                Consultorias personalizadas com os melhores profissionais do
+                mercado.
+              </p>
+              <a href="#" class="btn btn-primary">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================ 
+   SNIPPET 01 -- Formulario Bootstrap completo 
+   Adicionar como nova secao em demo.html 
+   Slide 04 
+   ================================================ -->
+
+    <!-- Secao de formulario de contato -->
+    <section class="container my-5" id="contato">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+          <h2 class="mb-4 text-center">Entre em contato</h2>
+          <form>
+            <div class="mb-3">
+              <label for="nome" class="form-label">Nome completo</label>
+              <input
+                type="text"
+                id="nome"
+                class="form-control"
+                placeholder="Seu nome"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">E-mail</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="seu@email.com"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="assunto" class="form-label">Assunto</label>
+              <select id="assunto" class="form-select">
+                <option value="">Selecione um assunto...</option>
+                <option value="info">Informacoes</option>
+                <option value="orcamento">Orcamento</option>
+                <option value="suporte">Suporte</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="mensagem" class="form-label">Mensagem</label>
+              <textarea
+                id="mensagem"
+                class="form-control"
+                rows="4"
+                placeholder="Sua 
+mensagem..."
+              ></textarea>
+            </div>
+
+            <div class="mb-3 form-check">
+              <input type="checkbox" id="aceito" class="form-check-input" />
+              <label for="aceito" class="form-check-label">
+                Aceito os termos de uso
+              </label>
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Enviar mensagem
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================ 
+   SNIPPET 03 -- Accordion de FAQ e Tabs de servicos 
+   Adicionar como duas novas secoes em demo.html 
+   Slide 08 
+   ================================================ -->
+
+    <!-- Secao FAQ com accordion -->
+    <section class="container my-5" id="faq">
+      <h2 class="mb-4 text-center">Perguntas frequentes</h2>
+      <div class="accordion" id="faqSecao">
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button"
+              data-bs-toggle="collapse"
+              data-bs-target="#faq1"
+              data-bs-parent="#faqSecao"
+            >
+              O que é a ByteShield?
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse show">
+            <div class="accordion-body">
+              A ByteShield é uma organização especializada em proteger sistemas,
+              redes, dados e operações digitais contra ameaças virtuais. Seu
+              principal objetivo é garantir a confidencialidade, integridade e
+              disponibilidade das informações, prevenindo ataques como invasões,
+              vazamentos de dados, ransomware e outras formas de crime
+              cibernético..
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#faq2"
+              data-bs-parent="#faqSecao"
+            >
+              Como contratar os serviços da ByteShield?
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              Preencha o formulário de contato para entrar em contato com um de
+              nossos especialistas.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button collapsed"
+              data-bs-toggle="collapse"
+              data-bs-target="#faq3"
+              data-bs-parent="#faqSecao"
+            >
+              Quais setores a ByteShield atende?
+            </button>
+          </h2>
+          <div id="faq3" class="accordion-collapse collapse">
+            <div class="accordion-body">
+              A ByteShield atende empresas de diversos setores, incluindo
+              financeiro, saúde, varejo, tecnologia, manufatura e muitos outros.
+              Nossos serviços são personalizados para atender às necessidades de
+              segurança cibernética de cada cliente, independentemente do setor
+              em que atuam.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secao com tabs de categorias -->
+    <section class="container my-5">
+      <h2 class="mb-4 text-center">Newsletter</h2>
+
+      <ul class="nav nav-tabs mb-4" id="tabsServicos">
         <li class="nav-item">
-             <a class="nav-link" href="#">Contato</a> 
-        </li> 
-      </ul> 
-    </div> 
-  </div> 
-</nav>
+          <button
+            class="nav-link active"
+            data-bs-toggle="tab"
+            data-bs-target="#cat1"
+          >
+            Categoria A
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#cat2">
+            Categoria B
+          </button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#cat3">
+            Categoria C
+          </button>
+        </li>
+      </ul>
 
-<!-- Hero section com utilitarios --> 
-<section class="bg-dark text-white py-5 text-center"> 
-  <div class="container"> 
-    <h2 class="display-4 fw-bold mb-3">Cuide da segurança ciibernética da sua empresa com quem entende!</h2> 
-    <p class="lead mb-4 text-white-50">Solucoes digitais para proteger sua empresa
-crescer.</p> 
-    <a href="#" class="btn btn-warning btn-lg me-2 fw-bold">Fale com um especialista</a> 
-    <a href="#" class="btn btn-outline-light btn-lg">Saiba mais</a> 
-  </div> 
-</section>
- 
-  <!-- Grid responsivo: 1 col mobile, 2 tablet, 3 desktop --> 
-  <section class="container my-5"> 
-    <h2 class="mb-4">Nossos Serviços</h2> 
-    <div class="row g-4"> 
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="cat1">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card p-3">Em desenvolvimento.</div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="cat2">Em desenvolvimento.</div>
+        <div class="tab-pane fade" id="cat3">Em desenvolvimento.</div>
+      </div>
+    </section>
 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <img src="imagem/SOC.png" class="card-img-top card-img-fixed" alt="SOC 24x7">
-          <div class="card-body"> 
-            <h5 class="card-title">SOC 24x7</h5> 
-            <p class="card-text">Monitoramento 24 horas por dia, 7 dias por semana.</p> 
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-        </div> 
-      </div>      
+    <!-- Rodape -->
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+      <div class="container">
+        <p class="mb-1">
+          <span class="badge bg-primary me-1">Senac Rio CLaro</span>
+          <span class="badge bg-success me-1">Cybersecurity</span>
+          <span class="badge bg-warning text-dark">Frontend</span>
+        </p>
+        <p class="mb-0 text-white-50">
+          &copy; 2026 ByteShield -- Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <img src="imagem/Cloud Network Security_ A 2026 Guide to Hybrid & Multi-Cloud.jpg" class="card-img-top card-img-fixed" alt="Cloud Security">
-          <div class="card-body"> 
-            <h5 class="card-title">Cloud Security</h5> 
-            <p class="card-text">Segurança para o ambiente em nuvem de sua empresa.</p> 
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-        </div> 
-      </div>     
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="menuLateral">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Navegacao</h5>
+        <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-action">
+            <a href="#home">Pagina inicial</a>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <a href="#servicos">Servicos</a>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <a href="#contato">Contato</a>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <img src="imagem/consultoria02.png" class="card-img-top card-img-fixed" alt="Threat Intelligence">
-          <div class="card-body"> 
-            <h5 class="card-title">Threat Intelligence</h5> 
-            <p class="card-text">Análise e vigilância de ameaças cibernéticas.</p> 
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-        </div> 
-      </div>   
- 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <img src="imagem/Global Cybersecurity Operations.jpg" class="card-img-top card-img-fixed" alt="MDR">
-          <div class="card-body"> 
-            <h5 class="card-title">MDR</h5> 
-            <p class="card-text">Monitoramento e resposta a incidentes em tempo real.</p> 
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-        </div> 
-      </div> 
- 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <img src="imagem/baixados (2).jpg" class="card-img-top card-img-fixed" alt="Pentest">
-          <div class="card-body"> 
-            <h5 class="card-title">Pentest</h5> 
-            <p class="card-text">Testes de penetração para identificar vulnerabilidades no seu ambiente.</p> 
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-        </div> 
-      </div> 
- 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <img src="imagem/consultoria.png" class="card-img-top card-img-fixed" alt="Consultoria">
-          <div class="card-body"> 
-            <h5 class="card-title">Consultoria</h5> 
-            <p class="card-text">Consultorias personalizadas com os melhores profissionais do mercado.</p> 
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-        </div> 
-      </div> 
- 
-    </div> 
-  </section> 
- 
-  
-
-<!-- Rodape --> 
-<footer class="bg-dark text-white text-center py-4 mt-5"> 
-  <div class="container"> 
-    <p class="mb-1"> 
-      <span class="badge bg-primary me-1">Senac Rio CLaro</span> 
-      <span class="badge bg-success me-1">Cybersecurity</span> 
-      <span class="badge bg-warning text-dark">Frontend</span> 
-    </p> 
-    <p class="mb-0 text-white-50">&copy; 2026 ByteShield -- Todos os direitos 
-reservados.</p> 
-  </div> 
-</footer>
-
-<!-- Bootstrap JS Bundle (necessário para componentes interativos como navbar) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body> 
+    <!-- Bootstrap JS Bundle (necessário para componentes interativos como navbar) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
