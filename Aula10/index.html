@@ -2,158 +2,159 @@
    SNIPPET 01 -- Setup CDN + Primeiro Grid Bootstrap 
    Arquivo: demo.html (novo arquivo) 
    Slide 07 
-   ================================================ --> 
-<!DOCTYPE html> 
-<html lang="pt-BR"> 
-<head> 
-  <meta charset="UTF-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <title>Demo Bootstrap</title> 
-  <!-- Bootstrap CSS -- ANTES do seu style.css --> 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-rel="stylesheet"> 
-</head> 
+   ================================================ -->
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<body> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
 
-    <!-- ================================================ 
+<body>
+
+  <!-- ================================================ 
    SNIPPET 02 -- Hero e Header com utilitarios 
    Adicionar no demo.html antes da section de cards 
    Slide 10 
-   ================================================ --> 
- 
-<!-- Navbar com hamburger responsivo --> 
-<nav class="navbar navbar-expand-md navbar-dark bg-primary"> 
-  <div class="container"> 
-    <a class="navbar-brand fw-bold" href="#">ByteShield</a> 
- 
-    <!-- Botao hamburger (aparece apenas no mobile) --> 
-    <button class="navbar-toggler" type="button" 
-            data-bs-toggle="collapse" 
-            data-bs-target="#menuPrincipal" 
-            aria-controls="menuPrincipal" 
-            aria-expanded="false" 
-            aria-label="Abrir menu"> 
-      <span class="navbar-toggler-icon"></span> 
-    </button> 
- 
-    <!-- Links (colapsam no mobile, expandem no tablet+) --> 
-    <div class="collapse navbar-collapse" id="menuPrincipal"> 
-      <ul class="navbar-nav ms-auto gap-2"> 
-        <li class="nav-item"> 
-          <a class="nav-link active" href="#">Home</a> 
-        </li> 
-        <li class="nav-item"> 
-          <a class="nav-link" href="#">Servicos</a> 
-        </li> 
-        <li class="nav-item">
-             <a class="nav-link" href="#">Contato</a> 
-        </li> 
-      </ul> 
-    </div> 
-  </div> 
-</nav>
+   ================================================ -->
 
-<!-- Hero section com utilitarios --> 
-<section class="bg-dark text-white py-5 text-center"> 
-  <div class="container"> 
-    <h2 class="display-4 fw-bold mb-3">Transforme a segurança cibernética da sua empresa conosco</h2> 
-    <p class="lead mb-4 text-white-50">Solucoes digitais para proteger sua empresa
-crescer.</p> 
-    <a href="#" class="btn btn-warning btn-lg me-2 fw-bold">Fale com um especialista</a> 
-    <a href="#" class="btn btn-outline-light btn-lg">Saiba mais</a> 
-  </div> 
-</section>
- 
-  <!-- Grid responsivo: 1 col mobile, 2 tablet, 3 desktop --> 
-  <section class="container my-5"> 
-    <h2 class="mb-4">Nossos Serviços</h2> 
-    <div class="row g-4"> 
+  <!-- Navbar com hamburger responsivo -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">ByteShield</a>
 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <div class="card-body"> 
-            <h5 class="card-title">SOC 24x7</h5> 
-            <p class="card-text mb-5">Monitoramento 24 horas por dia, 7 dias por semana.</p> 
-            
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-            <img src="imagem/SOC.png" class="card-img-bottom mb-3 h-100" alt="SOC 24x7">
-        </div> 
-            
-      </div>      
+      <!-- Botao hamburger (aparece apenas no mobile) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+        aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <div class="card-body"> 
-            <h5 class="card-title">Cloud Security</h5> 
-            <p class="card-text">Segurança para o ambiente em nuvem de sua empresa.</p> 
-            <img src="imagem/Cloud Network Security_ A 2026 Guide to Hybrid & Multi-Cloud.jpg" class="card-img-top mb-3" alt="Cloud Security">
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-        </div> 
-      </div>     
+      <!-- Links (colapsam no mobile, expandem no tablet+) -->
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto gap-2">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Servicos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contato</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <div class="card-body"> 
-            <h5 class="card-title">Threat Intelligence</h5> 
-            <p class="card-text">Análise e vigilância de ameaças cibernéticas.</p> 
-            <img src="imagem/consultoria02.png" class="card-img-top mb-3" alt="Threat Intelligence">
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-        </div> 
-      </div>   
- 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <div class="card-body"> 
-            <h5 class="card-title">MDR</h5> 
-            <p class="card-text">Monitoramento e resposta a incidentes em tempo real.</p> 
-            <img src="imagem/Global Cybersecurity Operations.jpg" class="card-img-top mb-3" alt="MDR">
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-        </div> 
-      </div> 
- 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <div class="card-body">
-            <h5 class="card-title">Pentest</h5> 
-            <p class="card-text">Testes de penetração para identificar vulnerabilidades no seu ambiente.</p> 
-            <img src="imagem/baixados (2).jpg" class="card-img-top mb-3" alt="Pentest">
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-        </div> 
-      </div> 
- 
-      <div class="col-12 col-md-6 col-lg-4"> 
-        <div class="card h-100"> 
-          <div class="card-body"> 
-            <h5 class="card-title">Consultoria</h5> 
-            <p class="card-text">Consultorias personalizadas com os melhores profissionais do mercado.</p> 
-            <img src="imagem/consultoria.png" class="card-img-top mb-3" alt="Consultoria">
-            <a href="#" class="btn btn-primary">Saiba mais</a> 
-          </div> 
-        </div> 
-      </div> 
- 
-    </div> 
-  </section> 
- 
-  
+  <!-- Hero section com utilitarios -->
+  <section class="bg-dark text-white py-5 text-center">
+    <div class="container">
+      <h2 class="display-4 fw-bold mb-3">Transforme a segurança cibernética da sua empresa conosco</h2>
+      <p class="lead mb-4 text-white-50">Solucoes digitais para proteger sua empresa
+        crescer.</p>
+      <a href="#" class="btn btn-warning btn-lg me-2 fw-bold">Fale com um especialista</a>
+      <a href="#" class="btn btn-outline-light btn-lg">Saiba mais</a>
+    </div>
+  </section>
 
-<!-- Rodape --> 
-<footer class="bg-dark text-white text-center py-4 mt-5"> 
-  <div class="container"> 
-    <p class="mb-1"> 
-      <span class="badge bg-primary me-1">Bootstrap 5</span> 
-      <span class="badge bg-success me-1">Responsivo</span> 
-      <span class="badge bg-warning text-dark">UC15</span> 
-    </p> 
-    <p class="mb-0 text-white-50">&copy; 2026 ByteShield -- Todos os direitos 
-reservados.</p> 
-  </div> 
-</footer>
-</body> 
-</html> 
+  <!-- Grid responsivo: 1 col mobile, 2 tablet, 3 desktop -->
+  <section class="container my-5">
+    <h2 class="mb-4">Nossos Serviços</h2>
+    <div class="row g-4">
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100">
+          <img src="imagem/SOC.png" class="card-img-top" alt="SOC 24x7">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">SOC 24x7</h5>
+            <p class="card-text mb-4">Monitoramento 24 horas por dia, 7 dias por semana.</p>
+            <a href="#" class="btn btn-primary mt-auto">Saiba mais</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100">
+          <img src="imagem/Cloud Network Security_ A 2026 Guide to Hybrid & Multi-Cloud.jpg" class="card-img-top"
+            alt="Cloud Security">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Cloud Security</h5>
+            <p class="card-text mb-4">Segurança para o ambiente em nuvem de sua empresa.</p>
+            <a href="#" class="btn btn-primary mt-auto">Saiba mais</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100">
+          <img src="imagem/consultoria02.png" class="card-img-top" alt="Threat Intelligence">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Threat Intelligence</h5>
+            <p class="card-text mb-4">Análise e vigilância de ameaças cibernéticas.</p>
+            <a href="#" class="btn btn-primary mt-auto">Saiba mais</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100">
+          <img src="imagem/Global Cybersecurity Operations.jpg" class="card-img-top" alt="MDR">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">MDR</h5>
+            <p class="card-text mb-4">Monitoramento e resposta a incidentes em tempo real.</p>
+            <a href="#" class="btn btn-primary mt-auto">Saiba mais</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100">
+          <img src="imagem/baixados (2).jpg" class="card-img-top" alt="Pentest">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Pentest</h5>
+            <p class="card-text mb-4">Testes de penetração para identificar vulnerabilidades no seu ambiente.</p>
+            <a href="#" class="btn btn-primary mt-auto">Saiba mais</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100">
+          <img src="imagem/consultoria.png" class="card-img-top" alt="Consultoria">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Consultoria</h5>
+            <p class="card-text mb-4">Consultorias personalizadas com os melhores profissionais do mercado.</p>
+            <a href="#" class="btn btn-primary mt-auto">Saiba mais</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- Rodape -->
+  <footer class="bg-dark text-white text-center py-4 mt-5">
+    <div class="container">
+      <p class="mb-1">
+        <span class="badge bg-primary me-1">Bootstrap 5</span>
+        <span class="badge bg-success me-1">Responsivo</span>
+        <span class="badge bg-warning text-dark">UC15</span>
+      </p>
+      <p class="mb-0 text-white-50">&copy; 2026 ByteShield -- Todos os direitos
+        reservados.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
