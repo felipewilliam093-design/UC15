@@ -51,9 +51,26 @@ tempBtn.addEventListener("click", () => {
   const de = document.querySelector("#tempDe").value;
   const para = document.querySelector("#tempPara").value;
 
+  if (isNaN(valor)) {
+    document.querySelector("#tempResultado").textContent = "Digite um valor válido";
+    return;
+  }
+
   const resultado = converterTemperatura(valor, de, para);
   document.querySelector("#tempResultado").textContent =
     `Resultado: ${resultado.toFixed(2)} ${para}`;
+});
+
+const tempRegBtn = document.querySelector("#tempRegBtn");
+tempRegBtn.addEventListener("click", () => {
+  const valor = parseFloat(document.querySelector("#tempInput").value);
+  const de = document.querySelector("#tempDe").value;
+  const para = document.querySelector("#tempPara").value;
+
+  if (!isNaN(valor)) {
+    const resultado = converterTemperatura(valor, de, para);
+    registrarHistorico(`Temperatura: ${valor} ${de} para ${resultado.toFixed(2)} ${para}`);
+  }
 });
 // ================================================
 // SNIPPET 03 -- JS do Conversor de Moeda
@@ -85,7 +102,98 @@ moedaBtn.addEventListener("click", () => {
   const de = document.querySelector("#moedaDe").value;
   const para = document.querySelector("#moedaPara").value;
 
+  if (isNaN(valor)) {
+    document.querySelector("#moedaResultado").textContent = "Digite um valor válido";
+    return;
+  }
+
   const resultado = converterMoeda(valor, de, para);
   document.querySelector("#moedaResultado").textContent =
     `Resultado: ${resultado.toFixed(2)} ${para}`;
+});
+
+const moedaRegBtn = document.querySelector("#moedaRegBtn");
+moedaRegBtn.addEventListener("click", () => {
+  const valor = parseFloat(document.querySelector("#moedaInput").value);
+  const de = document.querySelector("#moedaDe").value;
+  const para = document.querySelector("#moedaPara").value;
+
+  if (!isNaN(valor)) {
+    const resultado = converterMoeda(valor, de, para);
+    registrarHistorico(`Moeda: ${valor} ${de} para ${resultado.toFixed(2)} ${para}`);
+  }
+});
+
+// ================================================
+// SNIPPET 04 -- JS do Conversor de Comprimento
+// ================================================
+
+// 1. Objeto com taxas de conversao para metros
+const conversaoMetros = {
+  m: 1,
+  cm: 0.01,
+  km: 1000,
+};
+
+// 2. Funcao de conversao
+function converterComprimento(valor, de, para) {
+  if (de === para) return valor;
+  return (valor * conversaoMetros[de]) / conversaoMetros[para];
+}
+
+// 3. Conectar com o evento de clique
+const compBtn = document.querySelector("#compBtn");
+compBtn.addEventListener("click", () => {
+  const valor = parseFloat(document.querySelector("#compInput").value);
+  const de = document.querySelector("#compDe").value;
+  const para = document.querySelector("#compPara").value;
+
+  if (isNaN(valor)) {
+    document.querySelector("#compResultado").textContent = "Digite um valor válido";
+    return;
+  }
+
+  const resultado = converterComprimento(valor, de, para);
+  document.querySelector("#compResultado").textContent =
+    `Resultado: ${resultado.toFixed(2)} ${para}`;
+});
+
+const compRegBtn = document.querySelector("#compRegBtn");
+compRegBtn.addEventListener("click", () => {
+  const valor = parseFloat(document.querySelector("#compInput").value);
+  const de = document.querySelector("#compDe").value;
+  const para = document.querySelector("#compPara").value;
+
+  if (!isNaN(valor)) {
+    const resultado = converterComprimento(valor, de, para);
+    registrarHistorico(`Comprimento: ${valor} ${de} para ${resultado.toFixed(2)} ${para}`);
+  }
+});
+
+// ================================================
+// SNIPPET 05 -- JS do Histórico
+// ================================================
+function registrarHistorico(texto) {
+  const lista = document.querySelector("#historicoLista");
+  const li = document.createElement("li");
+  li.className = "list-group-item d-flex justify-content-between align-items-center";
+  
+  const span = document.createElement("span");
+  span.textContent = texto;
+  
+  const btnExcluir = document.createElement("button");
+  btnExcluir.className = "btn btn-sm btn-outline-danger";
+  btnExcluir.innerHTML = "&times;";
+  btnExcluir.title = "Excluir conversão";
+  btnExcluir.addEventListener("click", () => {
+    lista.removeChild(li);
+  });
+
+  li.appendChild(span);
+  li.appendChild(btnExcluir);
+  lista.appendChild(li);
+}
+
+document.querySelector("#limparHistBtn").addEventListener("click", () => {
+  document.querySelector("#historicoLista").innerHTML = "";
 });

@@ -54,8 +54,13 @@
                 </div>
               </div>
 
-              <div class="d-grid mb-3">
-                <button id="tempBtn" class="btn btn-primary">Converter</button>
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <button id="tempBtn" class="btn btn-primary w-100">Converter</button>
+                </div>
+                <div class="col-6">
+                  <button id="tempRegBtn" class="btn btn-outline-primary w-100">Registrar</button>
+                </div>
               </div>
 
               <div
@@ -102,17 +107,89 @@
                 </div>
               </div>
 
-              <div class="d-grid mb-3">
-                <button id="moedaBtn" class="btn btn-primary">Converter</button>
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <button id="moedaBtn" class="btn btn-primary w-100">Converter</button>
+                </div>
+                <div class="col-6">
+                  <button id="moedaRegBtn" class="btn btn-outline-primary w-100">Registrar</button>
+                </div>
               </div>
 
               <div
                 id="moedaResultado"
-                class="alert alert-secondary text-center mb 0"
+                class="alert alert-secondary text-center mb-0"
               >
                 Resultado: ---
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- CARD C: COMPRIMENTO -->
+        <div class="col-md-5">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h2 class="h5 mb-3">Comprimento</h2>
+
+              <div class="mb-3">
+                <label for="compInput" class="form-label">Valor</label>
+                <input
+                  type="number"
+                  id="compInput"
+                  class="form-control"
+                  step="any"
+                />
+              </div>
+              <div class="row g-2 mb-3">
+                <div class="col">
+                  <label for="compDe" class="form-label">De</label>
+                  <select id="compDe" class="form-select">
+                    <option value="m">Metros</option>
+                    <option value="cm">Centímetros</option>
+                    <option value="km">Quilômetros</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="compPara" class="form-label">Para</label>
+                  <select id="compPara" class="form-select">
+                    <option value="cm">Centímetros</option>
+                    <option value="m">Metros</option>
+                    <option value="km">Quilômetros</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row g-2 mb-3">
+                <div class="col-6">
+                  <button id="compBtn" class="btn btn-primary w-100">Converter</button>
+                </div>
+                <div class="col-6">
+                  <button id="compRegBtn" class="btn btn-outline-primary w-100">Registrar</button>
+                </div>
+              </div>
+
+              <div
+                id="compResultado"
+                class="alert alert-secondary text-center mb-0"
+              >
+                Resultado: ---
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO HISTÓRICO -->
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+          <div class="card shadow-sm">
+            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+              <h2 class="h5 mb-0">Histórico de Conversões</h2>
+              <button id="limparHistBtn" class="btn btn-sm btn-danger">Limpar Tudo</button>
+            </div>
+            <ul id="historicoLista" class="list-group list-group-flush">
+            </ul>
           </div>
         </div>
       </div>
