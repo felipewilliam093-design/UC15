@@ -1,0 +1,101 @@
+<!-- ================================================ 
+     SNIPPET 01 -- HTML do Carrinho de Compras 
+     Arquivo: index.html (pasta aula15-carrinho) 
+     Slide 9 
+     ================================================ -->
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Carrinho de Compras</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container py-4">
+      <h1 class="text-center mb-4">Carrinho de Compras</h1>
+
+      <div class="row g-4">
+        <!-- COLUNA ESQUERDA: FORMULARIO -->
+        <div class="col-md-5">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h2 class="h5 mb-3">Adicionar produto</h2>
+
+              <div class="mb-3">
+                <label for="inputNome" class="form-label"
+                  >Nome do produto</label
+                >
+                <input type="text" id="inputNome" class="form-control" />
+              </div>
+
+              <div class="mb-3">
+                <label for="inputPreco" class="form-label">Preco (R$)</label>
+                <input
+                  type="number"
+                  id="inputPreco"
+                  class="form-control"
+                  step="0.01"
+                />
+              </div>
+
+              <div class="d-grid mb-3">
+                <button id="btnAdicionar" class="btn btn-primary">
+                  Adicionar
+                </button>
+              </div>
+
+              <hr />
+              <p class="small text-muted mb-2">Filtros (demonstracao):</p>
+              <div class="d-grid gap-2">
+                <button id="btnCaros" class="btn btn-outline-secondary btn sm">
+                  Mostrar caros (acima de R$ 100)
+                </button>
+                <button
+                  id="btnBaratos"
+                  class="btn btn-outline-secondary btn sm"
+                >
+                  Mostrar baratos (ate R$ 100)
+                </button>
+                <button id="btnTodos" class="btn btn-outline-secondary btn sm">
+                  Mostrar todos
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COLUNA DIREITA: LISTA E TOTAL -->
+        <div class="col-md-7">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h2 class="h5 mb-3">Itens no carrinho</h2>
+
+              <ul id="listaProdutos" class="list-group mb-3">
+                <!-- itens serao injetados aqui pelo JavaScript -->
+              </ul>
+
+              <div class="alert alert-success text-center mb-0">
+                <strong>Total: </strong>
+                <span id="totalCarrinho">R$ 0.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+ </div> 
+        </div> 
+  
+    </div> 
+</div> 
+  
+<script src="script.js"></script> 
+</body> 
+</html>
