@@ -28,7 +28,7 @@
               <input
                 type="text"
                 id="campoNome"
-                class="form- control"
+                class="form-control"
                 placeholder="Nome"
               />
             </div>
@@ -36,7 +36,7 @@
               <input
                 type="text"
                 id="campoClasse"
-                class="form- control"
+                class="form-control"
                 placeholder="Classe"
               />
             </div>
@@ -44,7 +44,7 @@
               <input
                 type="number"
                 id="campoLevel"
-                class="form- control"
+                class="form-control"
                 placeholder="Level"
               />
             </div>
@@ -52,7 +52,7 @@
               <input
                 type="text"
                 id="campoHabilidades"
-                class="form- control"
+                class="form-control"
                 placeholder="Habilidades (separadas por virgula)"
               />
             </div>
@@ -62,7 +62,7 @@
               <input
                 type="number"
                 id="campoHp"
-                class="form- control"
+                class="form-control"
                 placeholder="HP"
               />
             </div>
@@ -70,7 +70,7 @@
               <input
                 type="number"
                 id="campoMana"
-                class="form control"
+                class="form-control"
                 placeholder="Mana"
               />
             </div>
@@ -78,12 +78,12 @@
               <input
                 type="number"
                 id="campoAtaque"
-                class="form control"
+                class="form-control"
                 placeholder="Ataque"
               />
             </div>
             <div class="col-md-3">
-              <button id="btnAdicionarPersonagem" class="btn btn primary w-100">
+              <button id="btnAdicionarPersonagem" class="btn btn-primary w-100">
                 Adicionar
               </button>
             </div>
@@ -91,7 +91,25 @@
         </div>
       </div>
 
+      <!-- CITAÇÃO ÉPICA (ERWIN SMITH) -->
+      <div class="row justify-content-center my-5">
+        <div class="col-md-10 text-center quote-container">
+          <blockquote class="blockquote">
+            <p class="fst-italic mb-3">
+              "Somos nós que damos significado às vidas dos nossos soldados! Aqueles bravos caídos! Aqueles pobres mortos! As únicas pessoas que podem se lembrar deles somos nós, os vivos!"
+            </p>
+            <p class="fst-italic mb-0">
+              "Nós morreremos aqui, e confiaremos aos que vierem depois o significado das nossas vidas! Esse é o único método que temos para nos rebelar contra este mundo cruel!"
+            </p>
+            <footer class="blockquote-footer mt-3">Comandante Erwin Smith</footer>
+          </blockquote>
+        </div>
+      </div>
+
       <!-- AREA DE CATALOGO -->
+      <div class="mb-3 text-end">
+        <span id="contadorPersonagens" class="badge bg-secondary fs-6">Total de personagens: 0</span>
+      </div>
       <div id="catalogoPersonagens" class="row g-3">
         <!-- cards serao injetados aqui pelo JavaScript -->
       </div>

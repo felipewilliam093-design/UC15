@@ -12,7 +12,7 @@
 //   - habilidades: array de strings (objeto aninhado tipo array)
 //   - status: objeto com hp, mana e ataque (objeto aninhado)
 
-const personagens = [
+const personagensIniciais = [
   {
     nome: "Levi Ackerman",
     classe: "Guerreiro/Assassino",
@@ -50,8 +50,12 @@ const personagens = [
   },
 ];
 
+// Carrega do localStorage ou usa a lista inicial caso não tenha nada salvo
+let personagens = JSON.parse(localStorage.getItem("personagens")) || personagensIniciais;
+
 // Selecao do container onde os cards serao injetados
 const catalogo = document.querySelector("#catalogoPersonagens");
+const contador = document.querySelector("#contadorPersonagens");
 // ================================================
 // SNIPPET 06 -- Funcao renderizarCatalogo
 // Arquivo: script.js (parte 2)
@@ -63,31 +67,50 @@ const catalogo = document.querySelector("#catalogoPersonagens");
 //   innerHTML para o conteudo interno (mais legivel)
 function renderizarCatalogo() {
   catalogo.innerHTML = ""; // limpa antes de redesenhar
+  
+  // Salva o estado atual no localStorage para não perder ao recarregar
+  localStorage.setItem("personagens", JSON.stringify(personagens));
+  
+  // Atualiza o contador
+  if (contador) {
+    contador.textContent = `Total de personagens: ${personagens.length}`;
+  }
 
-  personagens.forEach((personagem) => {
+  personagens.forEach((personagem, index) => {
     // 1. Cria o container do card com createElement
     const colDiv = document.createElement("div");
     colDiv.className = "col-md-4";
 
+    // Cálculo do Poder Total (Média de HP, Mana e Ataque)
+    const poderTotal = ((personagem.status.hp + personagem.status.mana + personagem.status.ataque) / 3).toFixed(1);
+
     // 2. Define o conteudo interno com innerHTML e template string
-    //    Note o acesso aninhado: personagem.status.hp
-    //    E o uso de join no array de habilidades
     colDiv.innerHTML = ` 
-            <div class="card h-100 shadow-sm"> 
-                <div class="card-body"> 
+            <div class="card h-100 shadow-sm position-relative"> 
+                <div class="card-body d-flex flex-column"> 
                     <h3 class="card-title h5">${personagem.nome}</h3> 
-                    <p class="text-muted mb-2">${personagem.classe} — Level 
-${personagem.level}</p> 
+                    <p class="text-muted mb-2">${personagem.classe} — Level ${personagem.level}</p> 
   
                     <h6 class="mt-3 mb-1">Habilidades</h6> 
                     <p class="small mb-3">${personagem.habilidades.join(", ")}</p> 
   
                     <h6 class="mb-1">Status</h6> 
-                    <ul class="list-unstyled small mb-0"> 
+                    <ul class="list-unstyled small mb-3"> 
                         <li><strong>HP:</strong> ${personagem.status.hp}</li> 
                         <li><strong>Mana:</strong> ${personagem.status.mana}</li> 
                         <li><strong>Ataque:</strong> ${personagem.status.ataque}</li> 
                     </ul> 
+
+                    <!-- Destaque do Poder Total -->
+                    <div class="mt-auto mb-3 p-2 bg-light border rounded text-center shadow-sm">
+                        <small class="text-uppercase fw-bold text-muted d-block" style="font-size: 0.7rem;">Poder Total</small>
+                        <span class="badge bg-primary fs-5">${poderTotal}</span>
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-warning btn-sm w-100" onclick="editarPersonagem(${index})">Editar</button>
+                        <button class="btn btn-danger btn-sm w-100" onclick="deletarPersonagem(${index})">Deletar</button>
+                    </div>
                 </div> 
             </div> 
         `;
@@ -95,6 +118,11 @@ ${personagem.level}</p>
     // 3. Adiciona o card ao catalogo
     catalogo.appendChild(colDiv);
   });
+}
+
+function deletarPersonagem(index) {
+  personagens.splice(index, 1);
+  renderizarCatalogo();
 }
 
 // Renderizar pela primeira vez ao carregar a pagina
@@ -114,6 +142,24 @@ const campoHp = document.querySelector("#campoHp");
 const campoMana = document.querySelector("#campoMana");
 const campoAtaque = document.querySelector("#campoAtaque");
 const btnAdicionar = document.querySelector("#btnAdicionarPersonagem");
+
+let indexEdicao = -1;
+
+function editarPersonagem(index) {
+  const p = personagens[index];
+  campoNome.value = p.nome;
+  campoClasse.value = p.classe;
+  campoLevel.value = p.level;
+  campoHabilidades.value = p.habilidades.join(", ");
+  campoHp.value = p.status.hp;
+  campoMana.value = p.status.mana;
+  campoAtaque.value = p.status.ataque;
+  
+  indexEdicao = index;
+  btnAdicionar.textContent = "Salvar Alterações";
+  campoNome.focus();
+  window.scrollTo(0, 0); // Rola a página para cima para focar no formulário
+}
 
 function adicionarPersonagem() {
   // Validacao basica
@@ -141,7 +187,17 @@ function adicionarPersonagem() {
     },
   };
 
-  // Adiciona ao array e re-renderiza personagens.push(novoPersonagem);
+  if (indexEdicao > -1) {
+    // Atualiza o personagem existente
+    personagens[indexEdicao] = novoPersonagem;
+    indexEdicao = -1;
+    btnAdicionar.textContent = "Adicionar";
+  } else {
+    // Adiciona novo ao array
+    personagens.push(novoPersonagem);
+  }
+  
+  // Re-renderiza
   renderizarCatalogo();
 
   // Limpa o formulario
@@ -156,3 +212,17 @@ function adicionarPersonagem() {
 }
 
 btnAdicionar.addEventListener("click", adicionarPersonagem);
+
+// Permite adicionar um personagem ao pressionar "Enter" em qualquer campo
+const camposFormulario = [
+  campoNome, campoClasse, campoLevel, campoHabilidades, 
+  campoHp, campoMana, campoAtaque
+];
+
+camposFormulario.forEach(campo => {
+  campo.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+      adicionarPersonagem();
+    }
+  });
+});

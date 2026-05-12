@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&family=Metamorphous&display=swap');
+
+:root {
+    --aot-green: #2a3d31;
+    --aot-brown-dark: #4e3629;
+    --aot-brown-light: #634832;
+    --aot-khaki: #c8b39a;
+    --aot-parchment: #f4ead5;
+    --aot-titan-red: #8b0000;
+    --aot-steel: #4a4a4a;
+    --aot-blue: #002b5c;
+    --aot-accent: #d4af37; /* Brass/Gold for ODM gear */
+}
+
+body {
+    background-color: var(--aot-parchment);
+    background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+    font-family: 'Crimson Text', serif;
+    color: var(--aot-brown-dark);
+}
+
+h1, h2, h3, .h5 {
+    font-family: 'Metamorphous', cursive;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h1 {
+    color: var(--aot-green);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    border-bottom: 3px double var(--aot-brown-dark);
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 30px !important;
+}
+
+/* Form Styling */
+.card {
+    background-color: rgba(200, 179, 154, 0.3); /* Transparent Khaki */
+    border: 2px solid var(--aot-brown-dark);
+    border-radius: 0;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+}
+
+.card-body h2 {
+    color: var(--aot-brown-dark);
+    border-left: 5px solid var(--aot-green);
+    padding-left: 10px;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--aot-brown-light);
+    border-radius: 0;
+    color: var(--aot-brown-dark);
+}
+
+.form-control:focus {
+    background-color: #fff;
+    border-color: var(--aot-green);
+    box-shadow: 0 0 0 0.25rem rgba(42, 61, 49, 0.25);
+}
+
+.btn-primary {
+    background-color: var(--aot-green);
+    border-color: var(--aot-green);
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--aot-brown-dark);
+    border-color: var(--aot-brown-dark);
+    transform: translateY(-2px);
+}
+
+/* Character Cards */
+#catalogoPersonagens .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 10px solid var(--aot-green);
+}
+
+#catalogoPersonagens .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.card-title {
+    color: var(--aot-green);
+    font-weight: bold;
+}
+
+.text-muted {
+    color: var(--aot-brown-light) !important;
+}
+
+.badge.bg-secondary {
+    background-color: var(--aot-brown-dark) !important;
+    border-radius: 0;
+}
+
+.badge.bg-primary {
+    background-color: var(--aot-green) !important;
+    border-radius: 0;
+    padding: 10px 15px;
+    border: 1px solid var(--aot-accent);
+}
+
+/* Power Highlight Box */
+.bg-light.border.rounded {
+    background-color: rgba(42, 61, 49, 0.05) !important;
+    border-color: var(--aot-khaki) !important;
+    border-width: 2px !important;
+    border-style: dashed !important;
+}
+
+/* Buttons inside cards */
+.btn-warning {
+    background-color: var(--aot-accent);
+    border-color: var(--aot-accent);
+    color: #fff;
+    border-radius: 0;
+}
+
+.btn-warning:hover {
+    background-color: #bfa02c;
+    border-color: #bfa02c;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: var(--aot-titan-red);
+    border-color: var(--aot-titan-red);
+    border-radius: 0;
+}
+
+.btn-danger:hover {
+    background-color: #660000;
+    border-color: #660000;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--aot-parchment);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--aot-brown-dark);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--aot-green);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.col-md-4 {
+    animation: fadeIn 0.5s ease backwards;
+}
+
+/* Quote Section Styling */
+.quote-container {
+    padding: 40px;
+    border-top: 1px solid var(--aot-accent);
+    border-bottom: 1px solid var(--aot-accent);
+    background-color: rgba(42, 61, 49, 0.03);
+    position: relative;
+    margin: 60px 0;
+}
+
+.quote-container::before {
+    content: '⚔️';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--aot-parchment);
+    padding: 0 15px;
+    font-size: 1.8rem;
+}
+
+.blockquote p {
+    color: var(--aot-brown-dark);
+    line-height: 1.8;
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.blockquote-footer {
+    color: var(--aot-green);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Metamorphous', cursive;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
