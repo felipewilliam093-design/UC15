@@ -8,6 +8,12 @@ const searchInput = document.getElementById('search-input');
 const searchBtn = document.getElementById('search-btn');
 const sortSelect = document.getElementById('sort-select');
 const loader = document.getElementById('loader');
+const historyContainer = document.getElementById('search-history');
+const suggestionsList = document.getElementById('suggestions-list');
+
+const HISTORY_KEY = 'ghibli_search_history';
+const MAX_HISTORY = 5;
+let currentSuggestions = [];
 
 let allFilms = [];
 let displayedFilms = [];
@@ -96,7 +102,45 @@ function validarBusca() {
         aplicarOrdenacaoERenderizar();
     } else {
         searchBtn.disabled = false;
+        executarBusca();
     }
+    atualizarSugestoes();
+}
+
+function atualizarSugestoes() {
+    const termo = searchInput.value.toLowerCase().trim();
+    suggestionsList.innerHTML = '';
+    
+    if (termo.length < 1) {
+        suggestionsList.classList.remove('active');
+        currentSuggestions = [];
+        return;
+    }
+
+    currentSuggestions = allFilms
+        .filter(f => f.title.toLowerCase().includes(termo))
+        .slice(0, 5);
+
+    if (currentSuggestions.length > 0) {
+        currentSuggestions.forEach((filme, index) => {
+            const li = document.createElement('li');
+            li.className = 'suggestion-item';
+            li.textContent = filme.title;
+            li.onclick = () => selecionarSugestao(filme.title);
+            suggestionsList.appendChild(li);
+        });
+        suggestionsList.classList.add('active');
+    } else {
+        suggestionsList.classList.remove('active');
+    }
+}
+
+function selecionarSugestao(titulo) {
+    searchInput.value = titulo;
+    suggestionsList.classList.remove('active');
+    validarBusca();
+    executarBusca();
+    dispararSalvarHistorico();
 }
 
 /**
@@ -110,7 +154,6 @@ function executarBusca() {
     );
     
     aplicarOrdenacaoERenderizar();
-    salvarLogBusca(termo);
 }
 
 /**
@@ -159,7 +202,62 @@ function exibirMensagemVazia() {
 }
 
 function salvarLogBusca(termo) {
-    console.log(`Busca executada: "${termo}" em ${new Date().toLocaleTimeString()}`);
+    if (!termo || termo.length < 2) return;
+
+    let historico = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+    
+    // Remove o termo se já existir (para movê-lo para o topo)
+    historico = historico.filter(item => item !== termo);
+    
+    // Adiciona no início
+    historico.unshift(termo);
+    
+    // Limita o tamanho
+    historico = historico.slice(0, MAX_HISTORY);
+    
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(historico));
+    renderizarHistorico();
+}
+
+function renderizarHistorico() {
+    const historico = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+    historyContainer.innerHTML = '';
+
+    if (historico.length > 0) {
+        historico.forEach(termo => {
+            const tag = document.createElement('div');
+            tag.className = 'history-tag';
+            
+            const label = document.createElement('span');
+            label.textContent = termo;
+            label.style.cursor = 'pointer';
+            label.onclick = () => {
+                searchInput.value = termo;
+                validarBusca();
+                executarBusca();
+            };
+
+            const btnExcluir = document.createElement('button');
+            btnExcluir.innerHTML = '&times;';
+            btnExcluir.className = 'delete-history-btn';
+            btnExcluir.title = 'Remover do histórico';
+            btnExcluir.onclick = (e) => {
+                e.stopPropagation();
+                excluirTermoHistorico(termo);
+            };
+
+            tag.appendChild(label);
+            tag.appendChild(btnExcluir);
+            historyContainer.appendChild(tag);
+        });
+    }
+}
+
+function excluirTermoHistorico(termo) {
+    let historico = JSON.parse(localStorage.getItem(HISTORY_KEY)) || [];
+    historico = historico.filter(item => item !== termo);
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(historico));
+    renderizarHistorico();
 }
 
 /**
@@ -167,18 +265,47 @@ function salvarLogBusca(termo) {
  */
 function inicializar() {
     searchInput.addEventListener('input', validarBusca);
-    searchBtn.addEventListener('click', executarBusca);
     
-    // Evento para o recurso de manipulação (Sort)
-    sortSelect.addEventListener('change', aplicarOrdenacaoERenderizar);
+    searchInput.addEventListener('focus', atualizarSugestoes);
+    
+    searchInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab' && currentSuggestions.length > 0) {
+            e.preventDefault();
+            selecionarSugestao(currentSuggestions[0].title);
+        }
+    });
 
     searchInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' && !searchBtn.disabled) {
             executarBusca();
+            dispararSalvarHistorico();
+        }
+    });
+
+    searchBtn.addEventListener('click', () => {
+        executarBusca();
+        dispararSalvarHistorico();
+    });
+    
+    // Restaurando o evento de ordenação que foi removido acidentalmente
+    sortSelect.addEventListener('change', aplicarOrdenacaoERenderizar);
+
+    // Fechar sugestões ao clicar fora
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.input-wrapper')) {
+            suggestionsList.classList.remove('active');
         }
     });
 
     buscarDados();
+    renderizarHistorico();
+}
+
+function dispararSalvarHistorico() {
+    const termo = searchInput.value.trim();
+    if (termo) {
+        salvarLogBusca(termo);
+    }
 }
 
 inicializar();
