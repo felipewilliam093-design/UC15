@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Ghibli Gallery | Explore the Magic</title>
+    <meta name="description" content="Explore a collection of Studio Ghibli films with descriptions, ratings, and beautiful posters.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-container">
+            <h1>Studio Ghibli Gallery</h1>
+        </div>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search for a film...">
+            <button id="search-btn" disabled>Buscar</button>
+            <select id="sort-select">
+                <option value="none">Ordenar por...</option>
+                <option value="year-desc">Ano (Mais recentes)</option>
+                <option value="year-asc">Ano (Mais antigos)</option>
+                <option value="score-desc">Popularidade (Nota)</option>
+                <option value="title-asc">Título (A-Z)</option>
+            </select>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Welcome to the magical world of Ghibli.</h2>
+            <p>Discover timeless stories and breathtaking animation.</p>
+        </section>
+
+        <div id="loader">
+            <p>Gathering soot sprites... (Loading films)</p>
+        </div>
+
+        <section id="films-grid" class="films-container">
+            <!-- Film cards will be injected here by JavaScript -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Ghibli Gallery Project. Data provided by Ghibli API.</p>
+            <p>Made with &hearts; for Studio Ghibli fans.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
